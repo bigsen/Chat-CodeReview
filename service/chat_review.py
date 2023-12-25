@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import openai
 import json
+import os
 import requests
 from datetime import datetime
 from openai import OpenAIError
 from retrying import retry
 
-from config.config import gitlab_server_url, gitlab_private_token, openai_api_key, openai_baseurl, openai_model_name, feishu_webhook, review_prompt, review_file_count, review_file_suffix
+from config.config import gitlab_server_url, gitlab_private_token, openai_api_key, openai_baseurl, openai_model_name, feishu_webhook, review_prompt, review_file_count, review_file_suffix, review_file_contain
 from service.content_handle import filter_diff_content
 from utils.LogHandler import log
 
@@ -111,7 +112,6 @@ def post_comments(id, commit_id, content, commit_url, title, branch, user_name, 
 def wait_and_retry(exception):
     return isinstance(exception, OpenAIError)
 
-
 @retry(retry_on_exception=wait_and_retry, stop_max_attempt_number=3, wait_fixed=60000)
 def generate_review_note(change):
     content = filter_diff_content(change['diff'])
@@ -152,14 +152,22 @@ def chat_review(project_id, project_commit_id, content, commit_url, title, branc
             break
 
         log.info(f"单项目的commit内容： {change}")
+        
+        file_name = os.path.basename(change['new_path'])
+        log.info(f"file_name： {file_name}")
         if any(ext in change['new_path'] for ext in review_file_suffix):
-            try:
-                review_note = generate_review_note(change)
-                log.info(f'对 {change["new_path"]}，review结果如下：{review_note}')
-                post_comments(project_id, project_commit_id, review_note, commit_url, title, branch, user_name, time)
-                count += 1  # 每次循环后增加计数
-            except Exception as e:
-                log.error(f'出现异常，异常信息：{e}')
+            if file_name in review_file_contain or file_name.endswith('.g.dart'):
+                log.info(f"跳过： {file_name}")
+                pass
+            else:
+                log.info(f"没跳过： {file_name}")
+                try:
+                    review_note = generate_review_note(change)
+                    log.info(f'对 {change["new_path"]}，review结果如下：{review_note}')
+                    post_comments(project_id, project_commit_id, review_note, commit_url, title, branch, user_name, time)
+                    count += 1
+                except Exception as e:
+                    log.error(f'出现异常，异常信息：{e}')
         else:
             log.error(f'格式不正确，对 {change["new_path"]}，不需要review')
 

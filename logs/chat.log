@@ -1,0 +1,111 @@
+2023-12-25 12:15:31.855 INFO | [MainThread] chat [34] | app.py <module> | Starting the app...
+2023-12-25 12:16:13.267 INFO | [MainThread] chat [34] | app.py <module> | Starting the app...
+2023-12-25 12:17:40.942 INFO | [Thread-1 (process_request_thread)] chat [83] | git.py webhook | 项目id: 12591，分支: loan_pf_zds，commit_id: ['f33a42bd35d37d74da68bc7bde61d7edb38bb255'] 
+2023-12-25 12:17:40.942 INFO | [Thread-1 (process_request_thread)] chat [85] | git.py webhook | 项目id: 12591，commit_url: ['https://git.n.xiaomi.com/insight/InsightBank/-/commit/f33a42bd35d37d74da68bc7bde61d7edb38bb255']
+2023-12-25 12:17:40.942 INFO | [Thread-1 (process_request_thread)] chat [86] | git.py webhook | 项目id: 12591，commit_id: ['f33a42bd35d37d74da68bc7bde61d7edb38bb255'] 开始进行ChatGPT代码补丁审查
+2023-12-25 12:17:40.942 INFO | [Thread-1 (process_request_thread)] chat [177] | chat_review.py review_code | 开始请求gitlab的https://git.n.xiaomi.com/api/v4/projects/12591/repository/commits/f33a42bd35d37d74da68bc7bde61d7edb38bb255/diff   ,commit: f33a42bd35d37d74da68bc7bde61d7edb38bb255的diff内容
+2023-12-25 12:17:41.338 INFO | [Thread-1 (process_request_thread)] chat [183] | chat_review.py review_code | 开始处理All请求的类容: [{'old_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'new_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': '@@ -18,7 +18,6 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController usernameController = InputController();\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n-  final InputController tagController2 = InputController();\n \n   @override\n   void initState() {\n'}]
+2023-12-25 12:17:41.338 INFO | [Thread-1 (process_request_thread)] chat [147] | chat_review.py chat_review | 开始code review
+2023-12-25 12:17:41.338 INFO | [Thread-1 (process_request_thread)] chat [154] | chat_review.py chat_review | 单项目的commit内容： {'old_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'new_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': '@@ -18,7 +18,6 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController usernameController = InputController();\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n-  final InputController tagController2 = InputController();\n \n   @override\n   void initState() {\n'}
+2023-12-25 12:17:41.339 INFO | [Thread-1 (process_request_thread)] chat [120] | chat_review.py generate_review_note | review content: @@ -18,7 +18,6 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ
+   final InputController usernameController = InputController();
+   final InputController passwordController = InputController();
+   final InputController tagController = InputController();
+-  final InputController tagController2 = InputController();
+ 
+   @override
+   void initState() {
+
+2023-12-25 12:17:48.269 INFO | [Thread-1 (process_request_thread)] chat [137] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_account_edit_page.dart review中...
+2023-12-25 12:17:48.269 INFO | [Thread-1 (process_request_thread)] chat [143] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_account_edit_page.dart review结束
+2023-12-25 12:17:48.269 INFO | [Thread-1 (process_request_thread)] chat [158] | chat_review.py chat_review | 对 lib/debug/widgets/container/debug_account_edit_page.dart，review结果如下：### `lib/debug/widgets/container/debug_account_edit_page.dart`
+
+(468 tokens) AI review 意见如下:
+
+变更评分：80
+以下是对代码变更的审查和反馈：
+1. 问题：删除了tagController2输入控制器，但没有相应的修改和删除相关代码。
+   反馈：请确保删除相关代码并确认不再需要使用tagController2输入控制器。
+修改后的代码：
+```dart
+class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ
+   final InputController usernameController = InputController();
+   final InputController passwordController = InputController();
+   final InputController tagController = InputController();
+   @override
+   void initState() {
+```
+请注意，以上反馈仅针对给出的代码变更部分。如果整个代码文件还有其他问题，请提供完整的代码并详细说明。
+2023-12-25 12:17:48.833 DEBUG | [Thread-1 (process_request_thread)] chat [102] | chat_review.py post_comments | 请求结果: <bound method Response.json of <Response [201]>>
+2023-12-25 12:17:48.833 INFO | [Thread-1 (process_request_thread)] chat [106] | chat_review.py post_comments | 创建评论成功，评论id: {'note': '### `lib/debug/widgets/container/debug_account_edit_page.dart`\n\n(468 tokens) AI review 意见如下:\n\n变更评分：80\n以下是对代码变更的审查和反馈：\n1. 问题：删除了tagController2输入控制器，但没有相应的修改和删除相关代码。\n   反馈：请确保删除相关代码并确认不再需要使用tagController2输入控制器。\n修改后的代码：\n```dart\nclass _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController usernameController = InputController();\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n   @override\n   void initState() {\n```\n请注意，以上反馈仅针对给出的代码变更部分。如果整个代码文件还有其他问题，请提供完整的代码并详细说明。', 'path': None, 'line': None, 'line_type': None, 'author': {'id': 30578, 'username': 'project_12591_bot', 'name': '****', 'state': 'active', 'avatar_url': 'https://git.n.xiaomi.com/api/user/getAvatarurlnocheck?user_name=project_12591_bot&checkSign=6ad6f5a13d45a7de8dd9ddb0bd75957d', 'web_url': 'https://git.n.xiaomi.com/project_12591_bot'}, 'created_at': '2023-12-25T12:17:48.539+08:00'}
+2023-12-25 12:19:17.664 INFO | [MainThread] chat [34] | app.py <module> | Starting the app...
+2023-12-25 12:19:25.085 INFO | [Thread-1 (process_request_thread)] chat [83] | git.py webhook | 项目id: 12591，分支: loan_pf_zds，commit_id: ['b14b5abdb2c6cf629ae108c13759e4ffc5c4a09d'] 
+2023-12-25 12:19:25.086 INFO | [Thread-1 (process_request_thread)] chat [85] | git.py webhook | 项目id: 12591，commit_url: ['https://git.n.xiaomi.com/insight/InsightBank/-/commit/b14b5abdb2c6cf629ae108c13759e4ffc5c4a09d']
+2023-12-25 12:19:25.087 INFO | [Thread-1 (process_request_thread)] chat [86] | git.py webhook | 项目id: 12591，commit_id: ['b14b5abdb2c6cf629ae108c13759e4ffc5c4a09d'] 开始进行ChatGPT代码补丁审查
+2023-12-25 12:19:25.087 INFO | [Thread-1 (process_request_thread)] chat [177] | chat_review.py review_code | 开始请求gitlab的https://git.n.xiaomi.com/api/v4/projects/12591/repository/commits/b14b5abdb2c6cf629ae108c13759e4ffc5c4a09d/diff   ,commit: b14b5abdb2c6cf629ae108c13759e4ffc5c4a09d的diff内容
+2023-12-25 12:19:25.546 INFO | [Thread-1 (process_request_thread)] chat [183] | chat_review.py review_code | 开始处理All请求的类容: [{'old_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'new_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': '@@ -19,6 +19,8 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n \n+  final InputController tag4Controller = InputController();\n+\n   @override\n   void initState() {\n     super.initState();\n'}, {'old_path': 'lib/debug/widgets/container/debug_app_to_app_page.dart', 'new_path': 'lib/debug/widgets/container/debug_app_to_app_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': "@@ -20,7 +20,7 @@ class _DebugAppToAppPageState extends BasePageState<DebugAppToAppPage> {\n   @override\n   Widget build(BuildContext context) {\n     return ScaffoldWidget(\n-      appBar: AppBarWidget.light('App to App Test'),\n+      appBar: AppBarWidget.light('App to 123423App Test'),\n       body: _buildBody(),\n     );\n   }\n"}, {'old_path': 'lib/debug/widgets/container/debug_auto_test_group_page.dart', 'new_path': 'lib/debug/widgets/container/debug_auto_test_group_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': "@@ -27,7 +27,7 @@ class _DebugAutoTestGroupPageState extends State<DebugAutoTestGroupPage> {\n     return ScaffoldWidget(\n       useScrollViewContainer: false,\n       padding: EdgeInsets.zero,\n-      appBar: AppBarWidget.light('测试用例'),\n+      appBar: AppBarWidget.light('测试123123用例'),\n       body: _buildBody(),\n     );\n   }\n"}]
+2023-12-25 12:19:25.547 INFO | [Thread-1 (process_request_thread)] chat [147] | chat_review.py chat_review | 开始code review
+2023-12-25 12:19:25.547 INFO | [Thread-1 (process_request_thread)] chat [154] | chat_review.py chat_review | 单项目的commit内容： {'old_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'new_path': 'lib/debug/widgets/container/debug_account_edit_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': '@@ -19,6 +19,8 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n \n+  final InputController tag4Controller = InputController();\n+\n   @override\n   void initState() {\n     super.initState();\n'}
+2023-12-25 12:19:25.547 INFO | [Thread-1 (process_request_thread)] chat [120] | chat_review.py generate_review_note | review content: @@ -19,6 +19,8 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ
+   final InputController passwordController = InputController();
+   final InputController tagController = InputController();
+ 
++  final InputController tag4Controller = InputController();
++
+   @override
+   void initState() {
+     super.initState();
+
+2023-12-25 12:19:35.800 INFO | [Thread-1 (process_request_thread)] chat [137] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_account_edit_page.dart review中...
+2023-12-25 12:19:35.801 INFO | [Thread-1 (process_request_thread)] chat [143] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_account_edit_page.dart review结束
+2023-12-25 12:19:35.802 INFO | [Thread-1 (process_request_thread)] chat [158] | chat_review.py chat_review | 对 lib/debug/widgets/container/debug_account_edit_page.dart，review结果如下：### `lib/debug/widgets/container/debug_account_edit_page.dart`
+
+(568 tokens) AI review 意见如下:
+
+评分：85分
+反馈：
+- 代码中新增了一个 InputController 对象 tag4Controller，但没有给出合适的注释说明其用途。
+- 建议在代码变更中提供完整的变更范围，包括文件名、函数名等，以便更好地理解代码变更的影响范围。
+- 对于新增的代码变更，建议给出适当的解释和原因，以便其他人理解原因，并修改该注释。
+- 可以考虑使用更具有描述性的变量名，从而提高代码可读性。
+修改后的代码可能如下所示：
+```dart
+@@ -19,6 +19,8 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ
+   final InputController passwordController = InputController();
+   final InputController tagController = InputController();
+ 
++  final InputController debugTagController = InputController(); // 用于调试的标签控制器
++
+   @override
+   void initState() {
+     super.initState();
+```
+注：以上注释均为示例，请根据实际情况进行修改和补充。
+2023-12-25 12:19:36.605 DEBUG | [Thread-1 (process_request_thread)] chat [102] | chat_review.py post_comments | 请求结果: <bound method Response.json of <Response [201]>>
+2023-12-25 12:19:36.608 INFO | [Thread-1 (process_request_thread)] chat [106] | chat_review.py post_comments | 创建评论成功，评论id: {'note': '### `lib/debug/widgets/container/debug_account_edit_page.dart`\n\n(568 tokens) AI review 意见如下:\n\n评分：85分\n反馈：\n- 代码中新增了一个 InputController 对象 tag4Controller，但没有给出合适的注释说明其用途。\n- 建议在代码变更中提供完整的变更范围，包括文件名、函数名等，以便更好地理解代码变更的影响范围。\n- 对于新增的代码变更，建议给出适当的解释和原因，以便其他人理解原因，并修改该注释。\n- 可以考虑使用更具有描述性的变量名，从而提高代码可读性。\n修改后的代码可能如下所示：\n```dart\n@@ -19,6 +19,8 @@ class _DebugAccountEditPageState extends State<DebugAccountEditPage> with AvoidQ\n   final InputController passwordController = InputController();\n   final InputController tagController = InputController();\n \n+  final InputController debugTagController = InputController(); // 用于调试的标签控制器\n+\n   @override\n   void initState() {\n     super.initState();\n```\n注：以上注释均为示例，请根据实际情况进行修改和补充。', 'path': None, 'line': None, 'line_type': None, 'author': {'id': 30578, 'username': 'project_12591_bot', 'name': '****', 'state': 'active', 'avatar_url': 'https://git.n.xiaomi.com/api/user/getAvatarurlnocheck?user_name=project_12591_bot&checkSign=6ad6f5a13d45a7de8dd9ddb0bd75957d', 'web_url': 'https://git.n.xiaomi.com/project_12591_bot'}, 'created_at': '2023-12-25T12:19:36.251+08:00'}
+2023-12-25 12:19:36.612 INFO | [Thread-1 (process_request_thread)] chat [154] | chat_review.py chat_review | 单项目的commit内容： {'old_path': 'lib/debug/widgets/container/debug_app_to_app_page.dart', 'new_path': 'lib/debug/widgets/container/debug_app_to_app_page.dart', 'a_mode': '100644', 'b_mode': '100644', 'new_file': False, 'renamed_file': False, 'deleted_file': False, 'diff': "@@ -20,7 +20,7 @@ class _DebugAppToAppPageState extends BasePageState<DebugAppToAppPage> {\n   @override\n   Widget build(BuildContext context) {\n     return ScaffoldWidget(\n-      appBar: AppBarWidget.light('App to App Test'),\n+      appBar: AppBarWidget.light('App to 123423App Test'),\n       body: _buildBody(),\n     );\n   }\n"}
+2023-12-25 12:19:36.612 INFO | [Thread-1 (process_request_thread)] chat [120] | chat_review.py generate_review_note | review content: @@ -20,7 +20,7 @@ class _DebugAppToAppPageState extends BasePageState<DebugAppToAppPage> {
+   @override
+   Widget build(BuildContext context) {
+     return ScaffoldWidget(
+-      appBar: AppBarWidget.light('App to App Test'),
++      appBar: AppBarWidget.light('App to 123423App Test'),
+       body: _buildBody(),
+     );
+   }
+
+2023-12-25 12:19:43.826 INFO | [Thread-1 (process_request_thread)] chat [137] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_app_to_app_page.dart review中...
+2023-12-25 12:19:43.826 INFO | [Thread-1 (process_request_thread)] chat [143] | chat_review.py generate_review_note | 对 lib/debug/widgets/container/debug_app_to_app_page.dart review结束
+2023-12-25 12:19:43.827 INFO | [Thread-1 (process_request_thread)] chat [158] | chat_review.py chat_review | 对 lib/debug/widgets/container/debug_app_to_app_page.dart，review结果如下：### `lib/debug/widgets/container/debug_app_to_app_page.dart`
+
+(489 tokens) AI review 意见如下:
+
+**评分：80分**
+**反馈：**
+- 在commit中，更改了AppBar的标题。不过，新的标题看起来是一个临时值，可能是为了测试而添加的。这样的临时值会使代码看起来不专业，并且可能会引起团队成员的困惑。建议将标题名更改为更专业和有意义的名称。
+- 修改后：`appBar: AppBarWidget.light('App to App Test')`
+- 建议改为：`appBar: AppBarWidget.light('App to App Page')`
+请注意，代码的目标是易于理解和维护。在提交之前，请验证代码是否符合团队规定和最佳实践。这将确保代码库的一致性和可维护性。
+2023-12-25 12:19:44.357 DEBUG | [Thread-1 (process_request_thread)] chat [102] | chat_review.py post_comments | 请求结果: <bound method Response.json of <Response [201]>>
+2023-12-25 12:19:44.357 INFO | [Thread-1 (process_request_thread)] chat [106] | chat_review.py post_comments | 创建评论成功，评论id: {'note': "### `lib/debug/widgets/container/debug_app_to_app_page.dart`\n\n(489 tokens) AI review 意见如下:\n\n**评分：80分**\n**反馈：**\n- 在commit中，更改了AppBar的标题。不过，新的标题看起来是一个临时值，可能是为了测试而添加的。这样的临时值会使代码看起来不专业，并且可能会引起团队成员的困惑。建议将标题名更改为更专业和有意义的名称。\n- 修改后：`appBar: AppBarWidget.light('App to App Test')`\n- 建议改为：`appBar: AppBarWidget.light('App to App Page')`\n请注意，代码的目标是易于理解和维护。在提交之前，请验证代码是否符合团队规定和最佳实践。这将确保代码库的一致性和可维护性。", 'path': None, 'line': None, 'line_type': None, 'author': {'id': 30578, 'username': 'project_12591_bot', 'name': '****', 'state': 'active', 'avatar_url': 'https://git.n.xiaomi.com/api/user/getAvatarurlnocheck?user_name=project_12591_bot&checkSign=6ad6f5a13d45a7de8dd9ddb0bd75957d', 'web_url': 'https://git.n.xiaomi.com/project_12591_bot'}, 'created_at': '2023-12-25T12:19:44.069+08:00'}
+2023-12-25 12:19:44.362 INFO | [Thread-1 (process_request_thread)] chat [151] | chat_review.py chat_review | 已达到循环次数上限 2，结束循环

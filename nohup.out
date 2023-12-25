@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "/Users/dasen/Desktop/公司项目/chat-review/app.py", line 16, in <module>
+    from app.git import git
+  File "/Users/dasen/Desktop/公司项目/chat-review/app/git.py", line 12, in <module>
+    from config.config import WEBHOOK_VERIFY_TOKEN
+  File "/Users/dasen/Desktop/公司项目/chat-review/config/config.py", line 49, in <module>
+    openai_api_key = openai_api_key
+                     ^^^^^^^^^^^^^^
+NameError: name 'openai_api_key' is not defined
+Traceback (most recent call last):
+  File "/Users/dasen/Desktop/公司项目/chat-review/app.py", line 16, in <module>
+    from app.git import git
+  File "/Users/dasen/Desktop/公司项目/chat-review/app/git.py", line 12, in <module>
+    from config.config import WEBHOOK_VERIFY_TOKEN
+  File "/Users/dasen/Desktop/公司项目/chat-review/config/config.py", line 49, in <module>
+    openai_api_key = openai_api_key
+                     ^^^^^^^^^^^^^^
+NameError: name 'openai_api_key' is not defined
+Traceback (most recent call last):
+  File "/Users/dasen/Desktop/公司项目/chat-review/app.py", line 16, in <module>
+    from app.git import git
+  File "/Users/dasen/Desktop/公司项目/chat-review/app/git.py", line 12, in <module>
+    from config.config import WEBHOOK_VERIFY_TOKEN
+  File "/Users/dasen/Desktop/公司项目/chat-review/config/config.py", line 49, in <module>
+    openai_api_key = openai_api_key
+                     ^^^^^^^^^^^^^^
+NameError: name 'openai_api_key' is not defined
+Traceback (most recent call last):
+  File "/Users/dasen/Desktop/公司项目/chat-review/app.py", line 16, in <module>
+    from app.git import git
+  File "/Users/dasen/Desktop/公司项目/chat-review/app/git.py", line 12, in <module>
+    from config.config import WEBHOOK_VERIFY_TOKEN
+  File "/Users/dasen/Desktop/公司项目/chat-review/config/config.py", line 49, in <module>
+    openai_api_key = openai_api_key
+                     ^^^^^^^^^^^^^^
+NameError: name 'openai_api_key' is not defined
+Traceback (most recent call last):
+  File "/Users/dasen/Desktop/公司项目/chat-review/app.py", line 16, in <module>
+    from app.git import git
+  File "/Users/dasen/Desktop/公司项目/chat-review/app/git.py", line 12, in <module>
+    from config.config import WEBHOOK_VERIFY_TOKEN
+  File "/Users/dasen/Desktop/公司项目/chat-review/config/config.py", line 49, in <module>
+    openai_api_key = openai_api_key
+                     ^^^^^^^^^^^^^^
+NameError: name 'openai_api_key' is not defined
+2023-12-18 17:13:27.353 INFO | [MainThread] chat [43] | app.py <module> | Starting the app...
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try disabling the 'AirPlay Receiver' service from System Preferences -> Sharing.

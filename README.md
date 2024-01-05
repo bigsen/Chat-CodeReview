@@ -7,7 +7,6 @@ https://github.com/nangongchengfeng/Chat-CodeReview/tree/main
 - 增加 Prompt 提示词配置。
 - 修改一次提交最多只能同时处理一个commit。
 - 优化处理 commit 信息方式。
-#### 优化后的代码仓库：https://git.n.xiaomi.com/dasen/code-review.git
 ```
 # Secret 令牌，GitLab 项目中可自定义一个。
 WEBHOOK_VERIFY_TOKEN = "chatgpt"
